@@ -1,6 +1,6 @@
 {
-    "name": "Led On Off",
-    "description": "",
+    "name": "Led Marquesine",
+    "description": "Extension to control a LED",
     "dependencies": {
         "device": "*"
     },
@@ -20,5 +20,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
