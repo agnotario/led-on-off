@@ -12,7 +12,7 @@ namespace ledMarquee {
     }
 
     //% block="Dibujar en la matriz LED con asset %asset" 
-    export function dibujarEnMatriz(asset: Image): void {
+    export function dibujarEnMatriz(asset: ScreenImage): void {
         let data = "";
         for (let y = 0; y < matrizAltura; y++) {
             for (let x = 0; x < matrizAnchura; x++) {
