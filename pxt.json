@@ -2,7 +2,8 @@
     "name": "Led Marquesine",
     "description": "Extension to control a LED",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "serial": "*"
     },
     "files": [
         "main.blocks",

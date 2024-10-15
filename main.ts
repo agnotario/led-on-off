@@ -1,18 +1,36 @@
-
-
 //% color=#0fbc11 icon="\uf205"
 //% block="LED Marquesine"
-namespace ledMarquesine {
+namespace ledMarquee {
+    let matrizAnchura = 0;
+    let matrizAltura = 0;
 
-    //% block="Set GPIO %pin to %value"
-    //% pin.min=0 pin.max=40
-    export function setGpioPin(pin: number, value: number): void {
-        setPin(pin, value);  // Llama a la función C++
+    //% block="Definir matriz LED con anchura %width y altura %height" 
+    export function definirMatriz(width: number, height: number): void {
+        matrizAnchura = width;
+        matrizAltura = height;
+        serial.writeLine(`SET_DIM ${width} ${height}`);
     }
 
-    // Shim para vincular TypeScript con la función C++
-    //% shim=setPin
-    function setPin(pin: number, value: number): void {
-        // Este cuerpo vacío será sustituido por la implementación en C++
+    //% block="Dibujar en la matriz LED con asset %asset" 
+    export function dibujarEnMatriz(asset: Image): void {
+        let data = "";
+        for (let y = 0; y < matrizAltura; y++) {
+            for (let x = 0; x < matrizAnchura; x++) {
+                const color = asset.getPixel(x, y);
+                let colorHex = convertirAHex(color);
+                data += `${colorHex} `;
+            }
+        }
+        serial.writeLine(`DRAW ${data}`);
     }
+
+    function convertirAHex(color: number): string {
+        const hex = "0123456789abcdef";
+        let resultado = "";
+        resultado += hex[(color >> 4) & 0xF];
+        resultado += hex[color & 0xF];
+        return resultado;
+    }
+
+
 }
