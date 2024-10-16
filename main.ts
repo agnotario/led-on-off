@@ -1,4 +1,4 @@
-//% color=#0fbc11 icon="\uf205"
+//% color=#ffbc11 icon="\uf205"
 //% block="LED Marquesine"
 namespace ledMarquee {
     let matrizAnchura = 0;
